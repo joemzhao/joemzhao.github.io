@@ -1,0 +1,23 @@
+# Site Build Settings
+
+# jekyll-paginate configuration
+paginate:            2
+
+# Build settings
+markdown:            kramdown
+highlighter:         rouge
+permalink:           none
+plugins:             [jekyll-paginate, jekyll-sitemap, jekyll-feed, jekyll-seo-tag]
+
+sass:
+  sass_dir: assets/css
+  style: :nested
+
+# Customise atom feed settings (this is where Jekyll-Feed gets configuration information)
+title:		           "(Free) lancer"
+description:	       ""
+author:              "Mengjie Zhao"
+
+# RSS 2.0 can be used instead of Atom by uncommenting following two lines
+#feed:
+#  path: rss-feed.xml
