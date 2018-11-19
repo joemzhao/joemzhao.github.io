@@ -1,1 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-11-10T22:56:54+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">(Free) lancer</title><subtitle></subtitle><author><name>Mengjie Zhao</name></author><entry><title type="html">Page Migration</title><link href="http://localhost:4000/random/page-migration.html" rel="alternate" type="text/html" title="Page Migration" /><published>2018-11-10T00:00:00+01:00</published><updated>2018-11-10T00:00:00+01:00</updated><id>http://localhost:4000/random/page-migration</id><content type="html" xml:base="http://localhost:4000/random/page-migration.html">&lt;p&gt;Just upgraded my homepage with this great jekyll them by &lt;a href=&quot;https://github.com/LeNPaul/Millennial&quot;&gt;Paul Le&lt;/a&gt;!&lt;/p&gt;</content><author><name>Mengjie Zhao</name></author><category term="sample" /><summary type="html">Just upgraded my homepage with this great jekyll them by Paul Le!</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/rigi.jpg" /></entry></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-11-20T00:25:17+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">(Free) lancer</title><subtitle></subtitle><author><name>Mengjie Zhao</name></author><entry><title type="html">Multiprocessing and Code Migrations</title><link href="http://localhost:4000/study/multiprocessing-in-Python.html" rel="alternate" type="text/html" title="Multiprocessing and Code Migrations" /><published>2018-11-19T00:00:00+01:00</published><updated>2018-11-19T00:00:00+01:00</updated><id>http://localhost:4000/study/multiprocessing-in-Python</id><content type="html" xml:base="http://localhost:4000/study/multiprocessing-in-Python.html">&lt;p&gt;Since the beginning of this year I started to heavily rely on the &lt;a href=&quot;https://docs.python.org/2/library/multiprocessing.html&quot;&gt;multiprocessing&lt;/a&gt; package provided by Python 2. One wrapper is also available in &lt;a href=&quot;https://github.com/joblib/joblib&quot;&gt;joblib&lt;/a&gt;, which can be used to pipeline tasks easily. The main application case to me is that I need to train a large group of classifiers (just linear SVMs, what a relief!) in my master’s thesis.&lt;/p&gt;
+
+&lt;p&gt;The package works great in my case – it takes less than 1 hour to finish training around 800 classifiers on a machine with 48 cores. The dataset for each classifier consists of ~8k vectors with 200 dimensions and a 5-fold cross validation is applied for finding the best &lt;em&gt;C&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;The difficulty I met is how to organize the codes. Since the bound methods are not picklable:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from __future__ import print_function
+
+from multiprocessing import Pool
+
+class Foo(object):
+	def __init__(self):
+		pass
+
+	def foo(self, a):
+		print (&quot;Bonjour!&quot;)
+
+myfoo = Foo()
+pool = Pool(2)
+pool.map(myfoo.foo, range(4))
+pool.close()
+pool.join()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Traceback (most recent call last):
+cPickle.PicklingError: Can't pickle &amp;lt;type 'instancemethod'&amp;gt;: attribute lookup __builtin__.instancemethod failed
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;thus I have to define &lt;code class=&quot;highlighter-rouge&quot;&gt;Foo.foo&lt;/code&gt; outside the class at the module level, which is ugly and unsafe. Some solutions are available on stackoverflow but most solutions can be grouped into two ways – do it ugly or register the bound methods such that they are picklable. The latter may not be ideal either as reproducibility is crucial.&lt;/p&gt;
+
+&lt;p&gt;However, it seems &lt;code class=&quot;highlighter-rouge&quot;&gt;Foo.foo&lt;/code&gt; can be paralleled in Python 3 directly (by making bound methods picklable):&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from multiprocessing import Pool
+
+class Foo(object):
+	def __init__(self):
+		pass
+
+	def foo(self, a):
+		print (&quot;Bonjour!&quot;)
+
+myfoo = Foo()
+pool = Pool(2)
+pool.map(myfoo.foo, range(4))
+pool.close()
+pool.join()
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Bonjour!
+Bonjour!
+Bonjour!
+Bonjour!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;I’ve never think about migrating to Python 3, given the great compatibility managing libraries/modules like &lt;code class=&quot;highlighter-rouge&quot;&gt;six&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;__future__&lt;/code&gt;, but it seems the &lt;code class=&quot;highlighter-rouge&quot;&gt;multiprocessing&lt;/code&gt; would be a deal-breaker …&lt;/p&gt;</content><author><name>Mengjie Zhao</name></author><category term="programming" /><summary type="html">Since the beginning of this year I started to heavily rely on the multiprocessing package provided by Python 2. One wrapper is also available in joblib, which can be used to pipeline tasks easily. The main application case to me is that I need to train a large group of classifiers (just linear SVMs, what a relief!) in my master’s thesis.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/python.png" /></entry><entry><title type="html">Page Migration</title><link href="http://localhost:4000/random/page-migration.html" rel="alternate" type="text/html" title="Page Migration" /><published>2018-11-10T00:00:00+01:00</published><updated>2018-11-10T00:00:00+01:00</updated><id>http://localhost:4000/random/page-migration</id><content type="html" xml:base="http://localhost:4000/random/page-migration.html">&lt;p&gt;Just upgraded my homepage with this great jekyll them by &lt;a href=&quot;https://github.com/LeNPaul/Millennial&quot;&gt;Paul Le&lt;/a&gt;!&lt;/p&gt;</content><author><name>Mengjie Zhao</name></author><category term="sample" /><summary type="html">Just upgraded my homepage with this great jekyll them by Paul Le!</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/rigi.jpg" /></entry></feed>

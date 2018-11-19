@@ -1,0 +1,226 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>
+    
+      Multiprocessing and Code Migrations | (Free) lancer
+    
+  </title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/syntax.css">
+  <!-- Use Atom -->
+  <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="(Free) lancer" />
+  <!-- RSS-v2.0
+  <link href="/rss-feed.xml" type="application/rss+xml" rel="alternate" title="(Free) lancer | "/>
+  //-->
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Source+Code+Pro">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+  <!-- Google Analytics -->
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-112060364-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <!-- Use Jekyll SEO plugin -->
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Multiprocessing and Code Migrations | (Free) lancer</title>
+<meta name="generator" content="Jekyll v3.6.3" />
+<meta property="og:title" content="Multiprocessing and Code Migrations" />
+<meta name="author" content="Mengjie Zhao" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Since the beginning of this year I started to heavily rely on the multiprocessing package provided by Python 2. One wrapper is also available in joblib, which can be used to pipeline tasks easily. The main application case to me is that I need to train a large group of classifiers (just linear SVMs, what a relief!) in my master’s thesis." />
+<meta property="og:description" content="Since the beginning of this year I started to heavily rely on the multiprocessing package provided by Python 2. One wrapper is also available in joblib, which can be used to pipeline tasks easily. The main application case to me is that I need to train a large group of classifiers (just linear SVMs, what a relief!) in my master’s thesis." />
+<link rel="canonical" href="http://localhost:4000/study/multiprocessing-in-Python.html" />
+<meta property="og:url" content="http://localhost:4000/study/multiprocessing-in-Python.html" />
+<meta property="og:site_name" content="(Free) lancer" />
+<meta property="og:image" content="http://localhost:4000/python.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-11-19T00:00:00+01:00" />
+<script type="application/ld+json">
+{"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/study/multiprocessing-in-Python.html"},"author":{"@type":"Person","name":"Mengjie Zhao"},"description":"Since the beginning of this year I started to heavily rely on the multiprocessing package provided by Python 2. One wrapper is also available in joblib, which can be used to pipeline tasks easily. The main application case to me is that I need to train a large group of classifiers (just linear SVMs, what a relief!) in my master’s thesis.","@type":"BlogPosting","headline":"Multiprocessing and Code Migrations","dateModified":"2018-11-19T00:00:00+01:00","datePublished":"2018-11-19T00:00:00+01:00","url":"http://localhost:4000/study/multiprocessing-in-Python.html","image":"http://localhost:4000/python.png","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+</head>
+
+
+<body>
+
+<div class="container">
+  <header class="site-header">
+  <h3 class="site-title">
+    <a href="/">(Free) lancer</a>
+  </h3>
+  <nav class="menu-list">
+    
+      <a href="/pages/readings.html" class="menu-link">Readings</a>
+    
+      <a href="/pages/study.html" class="menu-link">Study</a>
+    
+      <a href="/pages/random.html" class="menu-link">Random</a>
+    
+      <a href="/pages/publications.html" class="menu-link">Publications</a>
+    
+      <a href="/pages/about.html" class="menu-link">About</a>
+    
+
+    
+      <a href="https://twitter.com/mengjie_zhao" class="menu-link" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    
+  </nav>
+  <div class="dropdown">
+    <button class="dropbtn"><i class="fa fa-bars" aria-hidden="true"></i></button>
+    <div class="dropdown-content">
+      
+        <a href="/pages/readings.html" class="menu-link">Readings</a>
+      
+        <a href="/pages/study.html" class="menu-link">Study</a>
+      
+        <a href="/pages/random.html" class="menu-link">Random</a>
+      
+        <a href="/pages/publications.html" class="menu-link">Publications</a>
+      
+        <a href="/pages/about.html" class="menu-link">About</a>
+      
+
+      
+        <a href="https://twitter.com/mengjie_zhao" class="menu-link" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+      
+    </div>
+  </div>
+</header>
+
+  <div class="posts-wrapper">
+    <div class="page-content">
+  <h1>
+    Multiprocessing and Code Migrations
+  </h1>
+
+  <span class="post-date">
+    Written on
+    
+    November
+    19th,
+    2018
+    by
+    
+      Mengjie Zhao
+    
+  </span>
+
+  
+    <div class="featured-image">
+      <img src="/assets/img/python.png">
+    </div>
+  
+
+  <article>
+    <p>Since the beginning of this year I started to heavily rely on the <a href="https://docs.python.org/2/library/multiprocessing.html">multiprocessing</a> package provided by Python 2. One wrapper is also available in <a href="https://github.com/joblib/joblib">joblib</a>, which can be used to pipeline tasks easily. The main application case to me is that I need to train a large group of classifiers (just linear SVMs, what a relief!) in my master’s thesis.</p>
+
+<p>The package works great in my case – it takes less than 1 hour to finish training around 800 classifiers on a machine with 48 cores. The dataset for each classifier consists of ~8k vectors with 200 dimensions and a 5-fold cross validation is applied for finding the best <em>C</em>.</p>
+
+<p>The difficulty I met is how to organize the codes. Since the bound methods are not picklable:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from __future__ import print_function
+
+from multiprocessing import Pool
+
+class Foo(object):
+	def __init__(self):
+		pass
+
+	def foo(self, a):
+		print ("Bonjour!")
+
+myfoo = Foo()
+pool = Pool(2)
+pool.map(myfoo.foo, range(4))
+pool.close()
+pool.join()
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Traceback (most recent call last):
+cPickle.PicklingError: Can't pickle &lt;type 'instancemethod'&gt;: attribute lookup __builtin__.instancemethod failed
+</code></pre></div></div>
+<p>thus I have to define <code class="highlighter-rouge">Foo.foo</code> outside the class at the module level, which is ugly and unsafe. Some solutions are available on stackoverflow but most solutions can be grouped into two ways – do it ugly or register the bound methods such that they are picklable. The latter may not be ideal either as reproducibility is crucial.</p>
+
+<p>However, it seems <code class="highlighter-rouge">Foo.foo</code> can be paralleled in Python 3 directly (by making bound methods picklable):</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from multiprocessing import Pool
+
+class Foo(object):
+	def __init__(self):
+		pass
+
+	def foo(self, a):
+		print ("Bonjour!")
+
+myfoo = Foo()
+pool = Pool(2)
+pool.map(myfoo.foo, range(4))
+pool.close()
+pool.join()
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bonjour!
+Bonjour!
+Bonjour!
+Bonjour!
+</code></pre></div></div>
+<p>I’ve never think about migrating to Python 3, given the great compatibility managing libraries/modules like <code class="highlighter-rouge">six</code> and <code class="highlighter-rouge">__future__</code>, but it seems the <code class="highlighter-rouge">multiprocessing</code> would be a deal-breaker …</p>
+
+  </article>
+
+  <div class="post-share">
+    <div class="post-date">Contents Licensed CC BY NC SA 4.0</div>
+    <div class="sharing-icons">
+      <a href="https://twitter.com/intent/tweet?text=Multiprocessing and Code Migrations&amp;url=/study/multiprocessing-in-Python.html" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=/study/multiprocessing-in-Python.html&amp;title=Multiprocessing and Code Migrations" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+      <a href="https://plus.google.com/share?url=/study/multiprocessing-in-Python.html" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+    </div>
+  </div>
+
+  <div class="related">
+    <h2></h2>
+    
+    <ul class="related-posts">
+      
+        
+          
+          
+        
+      
+    </ul>
+  </div>
+
+  
+
+</div>
+
+  </div>
+  <footer class="footer">
+  
+    <a href="https://twitter.com/mengjie_zhao" class="menu-link" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+  
+  <div class="post-date"><a href="/">(Free) lancer |  by Mengjie Zhao</a></div>
+</footer>
+
+</div>
+
+</body>
+</html>
