@@ -1,4 +1,0 @@
----
-layout: misc
-title: Publications
----
