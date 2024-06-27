@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Publications (selected)
-permalink: /Publications
+permalink: /publications
 ---
 
 '*' = equal contribution; '#' = student/intern collaborator.
