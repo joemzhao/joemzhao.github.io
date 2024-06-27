@@ -5,9 +5,9 @@ permalink: /about
 ---
 
 
-### Greetings,
+Greeting, welcome to Mengjie Zhao's small corner on the Web!
 
-welcome to Mengjie Zhao's small corner on the Web!
+
 
 Currently I am a researcher at [Sony Group
 Corporation](https://www.sony.com/en/), living in
