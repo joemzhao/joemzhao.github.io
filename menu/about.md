@@ -28,6 +28,6 @@ of Munich</a>, Germany, working with Prof. Dr. <a
 href="https://scholar.google.com/citations?user=qIL9dWUAAAAJ&hl=en">
 Hinrich Sch&uuml;tze</a>.
 
-My full updated CV can be viewed [here](https://drive.google.com/file/d/1KItOk-BTInWhB7uxh_H29fO_Y3Fvbkhd/view?usp=drive_link).
+My full updated CV can be viewed [here](https://drive.google.com/file/d/1W3peamFv49Yd0ENK7WmUbd-4PaOlAOBJ/view?usp=sharing).
 
 You can reach me by mzhaolmu At gmail dot com.

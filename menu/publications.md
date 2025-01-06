@@ -6,7 +6,9 @@ permalink: /publications
 
 '*' = equal contribution; '#' = student/intern collaborator.
 
-[Google Scholar](https://scholar.google.com/citations?user=G6ema1YAAAAJ&hl=en&oi=ao)
+[Google Scholar](https://scholar.google.com/citations?user=G6ema1YAAAAJ&hl=en&oi=ao)<br>
+
+Area Chair: ACL Rolling Review<br>
 
 Reviewer/PC Member: ACL, EMNLP (outstanding '21), NAACL-HLT, EACL, COLING, ICLR, CVPR, ACL Rolling Review, ACM TALLIP, TACL, IEEE T-PAMI.
 
