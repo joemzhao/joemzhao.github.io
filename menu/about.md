@@ -9,8 +9,7 @@ Greeting, welcome to Mengjie Zhao's small corner on the Web!
 
 
 
-Currently I am a researcher at [Sony Group
-Corporation](https://www.sony.com/en/), living in
+Currently I am a researcher at [SB Intuitions](https://www.sbintuitions.co.jp/) of Softbank, living in
 [Tokyo](https://en.wikipedia.org/wiki/Tokyo), Japan.  I have been
 working and researching about [natural language
 processing](https://en.wikipedia.org/wiki/Natural_language_processing)
@@ -30,4 +29,4 @@ Hinrich Sch&uuml;tze</a>.
 
 My full updated CV can be viewed [here](https://drive.google.com/file/d/1W3peamFv49Yd0ENK7WmUbd-4PaOlAOBJ/view?usp=sharing).
 
-You can reach me by mzhaolmu At gmail dot com.
+You can contact me via mzhaolmu At gmail dot com.
