@@ -8,10 +8,38 @@ permalink: /publications
 
 [Google Scholar](https://scholar.google.com/citations?user=G6ema1YAAAAJ&hl=en&oi=ao)<br>
 
-Area Chair: ACL Rolling Review<br>
+Seniro Area Chair: EMNLP'25, ACL Rolling Review. <br>
+
+Area Chair: ACL Rolling Review.<br>
 
 Reviewer/PC Member: ACL, EMNLP (outstanding '21), NAACL-HLT, EACL, COLING, ICLR, CVPR, ACL Rolling Review, ACM TALLIP, TACL, IEEE T-PAMI.
 
+
+**2025**
+
+*GLOV: Guided Large Language Models as Implicit Optimizers for Vision Language Models*.<br>
+**TMLR 2025**<br>
+Jehanzeb Mirza#, **Mengjie Zhao**, Zhuoyuan Mao, Sivan Doveh, Wei Lin, Paul Gavrikov, Michael Dorkenwald, Shiqi Yang, Saurav Jha, Hiromi Wakaki, Yuki Mitsufuji, Horst Possegger, Rogerio Feris, Leonid Karlinsky, James Glass
+
+*Mining Your Own Secrets: Diffusion Classifier Scores For Continual Personalization Of Text-to-Image Diffusion Models*.<br>
+**ICLR 2025**<br>
+Saurav Jha, Shiqi Yang, Masato Ishii, **Mengjie Zhao**, Christian Simon, Jehanzeb Mirza, Dong Gong, Lina Yao, Shusuke Takahashi, Yuki Mitsufuji
+
+*Vinabench: Benchmark for faithful and consistent visual narratives*.<br>
+**CVPR 2025**<br>
+Silin Gao, Sheryl Mathew, Li Mi, Sepideh Mamooler, **Mengjie Zhao**, Hiromi Wakaki, Yuki Mitsufuji, Syrielle Montariol, Antoine Bosselut
+
+*OKG: On-the-Fly Keyword Generation in Sponsored Search Advertising*.<br>
+**COLING 2025 Industry Track** <br>
+Zhao Wang, Briti Gangopadhyay, **Mengjie Zhao**, Shingo Takamatsu
+
+*Cross-Modal Learning for Music-to-Music-Video Description Generation*.<br>
+**RepL4NLP-2025** <br>
+Zhuoyuan Mao, **Mengjie Zhao**, Qiyu Wu, Zhi Zhong, Wei-Hsiang Liao, Hiromi Wakaki, Yuki Mitsufuji
+
+*Deepresonance: Enhancing multimodal music understanding via music-centric multi-way instruction tuning*.<br>
+Preprint 2025 <br>
+Zhuoyuan Mao, **Mengjie Zhao**, Qiyu Wu, Hiromi Wakaki, Yuki Mitsufuji
 
 
 **2024**
@@ -19,17 +47,6 @@ Reviewer/PC Member: ACL, EMNLP (outstanding '21), NAACL-HLT, EACL, COLING, ICLR,
 *OpenMU: Your Swiss Army Knife for Music Understanding*. <br>
 Preprint 2024<br>
 **Mengjie Zhao**, Zhi Zhong, Zhuoyuan Mao, Shiqi Yang, Wei-Hsiang Liao, Shusuke Takahashi, Hiromi Wakaki, Yuki Mitsufuji
-
-
-*GLOV: Guided Large Language Models as Implicit Optimizers for Vision Language Models*.<br>
-Preprint 2024<br>
-M.J. Mirza#, **Mengjie Zhao**, et. al. 2024.
-
-
-*Mining Your Own Secrets: Diffusion Classifier Scores For Continual Personalization Of Text-to-Image Diffusion Models*.<br>
-Preprint 2024<br>
-Saurav Jha, Shiqi Yang, Masato Ishii, **Mengjie Zhao**, et. al. 2024.
-
 
 
 *Visual Echoes: A Simple Unified Transformer for Audio-Visual Generation*.<br>
@@ -66,7 +83,6 @@ Qiyu Wu#, **Mengjie Zhao**, Yutong He, Lang Huang, Junya Ono, Hiromi Wakaki, Yuk
 *LMTurk: Few-Shot Learners as Crowdsourcing Workers*. <br>
 In **NAACL 2022 (Findings)** <br>
 **Mengjie Zhao**, Fei Mi, Yasheng Wang, Minglei Li, Xin Jiang, Qun Liu, Hinrich Schütze
-
 
 *Modular and Parameter-Efficient Multimodal Fusion with Prompting*. <br>
 In **ACL 2022 (Findings)** <br>
