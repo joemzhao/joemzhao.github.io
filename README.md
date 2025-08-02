@@ -1,1 +1,1 @@
-https://joemzhao.github.io/
+https://joemzhao.github.io/about.html
