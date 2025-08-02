@@ -8,7 +8,7 @@ permalink: /publications
 
 [Google Scholar](https://scholar.google.com/citations?user=G6ema1YAAAAJ&hl=en&oi=ao)<br>
 
-Seniro Area Chair: EMNLP'25, ACL Rolling Review. <br>
+Senior Area Chair: EMNLP'25, ACL Rolling Review. <br>
 
 Area Chair: ACL Rolling Review.<br>
 
