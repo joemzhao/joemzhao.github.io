@@ -38,7 +38,7 @@ Zhao Wang, Briti Gangopadhyay, **Mengjie Zhao**, Shingo Takamatsu
 Zhuoyuan Mao, **Mengjie Zhao**, Qiyu Wu, Zhi Zhong, Wei-Hsiang Liao, Hiromi Wakaki, Yuki Mitsufuji
 
 *Deepresonance: Enhancing multimodal music understanding via music-centric multi-way instruction tuning*.<br>
-Preprint 2025 <br>
+**EMNLP** 2025 <br>
 Zhuoyuan Mao, **Mengjie Zhao**, Qiyu Wu, Hiromi Wakaki, Yuki Mitsufuji
 
 
